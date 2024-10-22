@@ -1,0 +1,22 @@
+-- Exemplo 1a: Selecionando todas as linhas e colunas da tabela "pedidos"
+SELECT * from pedidos;
+-- Exemplo 1b: Selecionando todas as linhas e colunas da tabela "clientes"
+SELECT * from clientes;
+
+-- Exemplo 2: Selecionando certas colunas de "clientes"
+
+SELECT 
+	ID_Cliente as 'ID Cliente', 
+    Nome, 
+    Data_Nascimento 'Data de Nascimento', 
+    Email 
+from clientes;
+
+-- Exemplo 3: selecionar apenas as 5 primeiras linhas da tabela "produtos"
+SELECT * from produtos LIMIT 5;
+
+-- Exemplo 4a: selecionar todas as linhas da tabela produtos MAS ordenando pela coluna "Preco_Unit"
+SELECT * from produtos ORDER BY Preco_Unit ASC;
+
+-- Exemplo 4b: mesma coisa mas desencendente
+SELECT * from produtos ORDER BY Preco_Unit DESC
