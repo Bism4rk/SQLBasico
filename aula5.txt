@@ -1,0 +1,26 @@
+-- Aula 5: Group By
+SELECT * FROM clientes;
+
+-- Exemplo 1: Use o Group By para criar uma consulta e descobrir o total de clientes por sexo
+SELECT 
+	Sexo,
+    COUNT(*) as 'Qtd. de clientes'
+FROM clientes
+GROUP BY Sexo;
+
+-- Exemplo 2: Use o Group By para ver a quantidade de produtos por marca
+SELECT * from produtos;
+SELECT
+	Marca_Produto,
+    COUNT(*) as 'Qtd. produtos'
+FROM produtos
+GROUP BY Marca_Produto;
+
+-- Exemplo 3: Faça uma consulta à tabela Pedidos e descubra a receita total e custo total por ID_Loja
+SELECT * from pedidos;
+SELECT 
+	ID_Loja,
+    SUM(Receita_Venda) as 'Receita total',
+    SUM(Custo_Venda) as 'Custo total'
+FROM pedidos
+GROUP BY ID_Loja;
