@@ -1,0 +1,19 @@
+-- Aula 6: Inner Join
+
+-- Exemplo 1: Faça uma consulta que tenha como resultado todas as colunas da tabela de pedidos e as colunas Loja, Gerente, e Telefone.
+SELECT * from pedidos;
+SELECT * from lojas;
+
+-- Tabela A: Fato -> pedidos
+-- Tabela B: Dimensão -> lojas
+-- Chave Primária: ID_Loja (lojas)
+-- Chave Estrangeira: ID_Loja (pedidos)
+
+SELECT
+	pedidos.*,
+    lojas.Loja,
+    lojas.Gerente,
+    lojas.Telefone
+FROM pedidos
+INNER JOIN lojas
+ON pedidos.ID_Loja = lojas.ID_Loja
