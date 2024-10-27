@@ -1,0 +1,60 @@
+-- Exercícios
+
+-- 1a) Selecione todas as colunas e linhas da tabela de produtos
+SELECT * from produtos;
+
+-- 1b) Agora selecione apenas as colunas Nome_Produto, Marca_Produto e Preco_Unit.
+-- Renomeie essas colunas para Nome do Produto, Marca e Preço Unitário
+SELECT Nome_Produto as 'Nome do Produto', Marca_Produto as 'Marca', Preco_Unit as 'Preço Unitário' FROM produtos;
+
+-- 1c) Selecione as 5 primeiras linhas da tabela de lojas (considere todas as colunas).
+SELECT * from lojas LIMIT 5;
+
+-- 2a) Faça uma consulta na tabela de lojas e ordene a tabela de acordo com a coluna de Num_Funcionarios, em ordem crescente.
+SELECT 
+	ID_Loja,
+	Loja as 'Nome da loja',
+    Gerente,
+    Endereco as 'Endereço',
+    Num_Funcionarios as 'Qtd. de funcionários',
+    Telefone as 'Número para contato'
+from lojas ORDER BY Num_Funcionarios ASC;
+
+-- 2b) Faça uma consulta na tabela de clientes, ordenando a tabela de acordo com o nome
+-- (ordem alfabética) e sobrenome (ordem alfabética). Retorne todas as colunas e linhas da tabela.
+SELECT * from clientes ORDER BY Nome ASC;
+SELECT * from clientes ORDER BY Sobrenome ASC;
+
+-- 3a) Faça um filtro na tabela de produtos e retorne apenas os produtos com custo maior ou igual a 200.
+SELECT * from produtos WHERE Custo_Unit >= 200;
+
+-- 3b) Faça um filtro na tabela de produtos e retorne apenas os produtos da marca "DELL"
+SELECT * from produtos WHERE Marca_Produto = 'DELL';
+
+-- 4a) Descubra o total de custo da tabela de pedidos.
+SELECT * from pedidos;
+SELECT SUM(Custo_Venda) from pedidos;
+
+-- 4b) Descubra a quantidade total de lojas.
+SELECT * from lojas;
+SELECT COUNT(Loja) from lojas;
+
+-- 4c) Descubra o custo médio dos produtos (de acordo com a tabela de produtos).
+SELECT * from produtos;
+SELECT AVG(Custo_Unit) FROM produtos;
+
+-- 4d) Descubra a quantidade mínima e máxima de funcionários das lojas (faça isso em um único SELECT).
+SELECT * from lojas;
+SELECT MIN(Num_Funcionarios) as 'Qtd. Mínima', MAX(Num_Funcionarios) as 'Qtd. Máxima' from lojas;
+
+-- 5a) Faça um agrupamento para descobrir o total de clientes por Sexo.
+SELECT * from clientes;
+SELECT Sexo, COUNT(*) as 'Qtd. de clientes' from clientes GROUP BY Sexo;
+
+-- 5b) Faça um agrupamento para descobrir quantos produtos existem por categoria.
+SELECT * from produtos;
+SELECT ID_Categoria, COUNT(*) from produtos GROUP BY ID_Categoria;
+
+-- 5c) Faça um agrupamento para descobrir a soma total de receita por Loja
+SELECT * from pedidos;
+SELECT ID_Loja, SUM(Receita_Venda) as 'Receita total' FROM pedidos GROUP BY ID_Loja;
